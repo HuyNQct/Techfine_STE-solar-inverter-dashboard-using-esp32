@@ -574,6 +574,7 @@ Value: true
 In about 60 seconds, Vercel will build your application and give you a live production URL.
 Bookmark it. Add it to your phone's home screen.
 After deployment the dashboard is accessible from any device with an internet connection.
+
 ---
 
 ## Design Decisions
