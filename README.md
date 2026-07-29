@@ -107,6 +107,7 @@ They use a simple ASCII protocol. Once you send the command `QPIGS` (plus a 2-by
 *(After testing a few other models and reading service manuals from different OEMs, I found that most Voltronic-based units expose almost the same protocol. That's why this project now works with more brands than I originally expected.)*
 
 **PRO-TIP: Read The Manual first!**
+
 Before you start cutting wires and guessing, dig up your inverter's user manual. Some rare, benevolent manufacturers actually print the exact RS232 RJ45 pinout diagram in the appendix or installation section. If you find it, you're golden. If not, welcome to hell.
 
 Cut your Ethernet cable, strip the wires, and prepare to trace the pins. 
@@ -452,7 +453,9 @@ constexpr const char* CHAT_ID   = "YOUR_TELEGRAM_CHAT_ID";
 ### Hardware Pins & Timeouts
 
 By default, the RX/TX pins for the MAX3232 are on **GPIO 25** and **GPIO 26**, and the ATS Relay is on **GPIO 5**.
+
 The timeouts prevent the relay from switching back and forth rapidly (**Switch Lockout = 3 minutes**).
+
 Several other timeout values are available inside `config.h`.
 These include:
 - Telegram cooldown
@@ -490,6 +493,7 @@ For the very first time, the ESP32 needs to be physically plugged into your comp
 4. Wait for it to compile and flash.
 
 The first build may take several minutes while PlatformIO downloads the ESP32 toolchain and all required libraries. This is normal.
+
 When everything goes well, you'll see something similar to:
 ```text
 ========================= [SUCCESS] =========================
@@ -524,7 +528,7 @@ npm install
 
 The React app needs to know where to pull the data from.
 1. Copy the example environment in file: `.env.example`
-2. Create the `.env` file and paste your ThingSpeak Channel ID (the one you created in **Step 6**).
+2. Create the `.env` file in `frontend/` and paste your ThingSpeak Channel ID (the one you created in **Step 6**).
 
 ```env
 VITE_CHANNEL_ID=1234567 # Replace with your actual ThingSpeak Channel ID
@@ -550,7 +554,7 @@ If you see a dashboard populated with your solar data instead of a blank white s
 
 ---
 
-### Step 4: 1-Click Deploy to Vercel (Production)
+### Step 4: 1-Click Deploy to Vercel
 
 You want to check your battery voltage while lying on the bed, right? Let's put this on the cloud for free using **Vercel**.
 
@@ -572,7 +576,9 @@ Value: true
 6. Click **Deploy**.
 
 In about 60 seconds, Vercel will build your application and give you a live production URL.
+
 Bookmark it. Add it to your phone's home screen.
+
 After deployment the dashboard is accessible from any device with an internet connection.
 
 ---
