@@ -16,6 +16,7 @@ import { Sun, Zap, Activity, Thermometer } from 'lucide-react';
 
 export default function App() {
   const channelId = import.meta.env.VITE_CHANNEL_ID;
+  const MAX_LOAD_W = Number(import.meta.env.VITE_MAX_LOAD_W) || 5000;
   const hasATS = import.meta.env.VITE_HAS_ATS === 'true';
 
   if (!channelId || channelId === 'nhap_channel_id_cua_ban_vao_day') {
@@ -63,7 +64,7 @@ export default function App() {
 
             <GaugeCard title="Công Suất Tải (AC)"
                        value={data.acLoad}
-                       max={3000}
+                       max={MAX_LOAD_W}
                        isNight={isNight} {...theme} />
 
             <MetricCard title="Điện Mặt Trời (PV)"

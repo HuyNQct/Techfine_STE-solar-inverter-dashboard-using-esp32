@@ -506,8 +506,12 @@ Your hardware is ready!
 
 This is a responsive React SPA built with **Vite**. It bypasses traditional backends and fetches your inverter's telemetry directly from ThingSpeak's public API.
 
----
+> 🇻🇳 **Why is the dashboard UI in Vietnamese?**
+> Simple: My dad uses this at home every single day. He doesn't speak English, and if the UI said "Grid Voltage" or "AC Load", he would call me 10 times a day asking for translations.
+>
+> If you don't speak Vietnamese, use your browser's auto-translate feature, or feel free to fork the repo, add localization, and hit me with a Pull Request!
 
+---
 ### Step 1: Local Setup (Testing on Your Machine)
 
 Before throwing it onto the internet, make sure the dashboard works on your PC and your ESP32 is actually pushing data.
@@ -532,7 +536,8 @@ The React app needs to know where to pull the data from.
 
 ```env
 VITE_CHANNEL_ID=1234567 # Replace with your actual ThingSpeak Channel ID
-VITE_HAS_ATS=true      # Set to false to hide ATS UI if you didn't install the relay
+VITE_HAS_ATS=true       # Set to false to hide ATS UI if you didn't install the relay
+VITE_MAX_LOAD_W=3000    # Change this to 5000 if you use a 5kW inverter, similarly to the other. It scales the Load Progress Bar so it doesn't break the layout.
 ```
 ---
 
