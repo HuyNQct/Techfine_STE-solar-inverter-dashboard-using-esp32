@@ -25,13 +25,13 @@
 ---
 
 ## 1. The Backstory 
-It all started when I set up my off-grid solar system. The inverter works like a charm, but the official Wi-Fi monitoring dongle (the infamous Solar Plug-RWB1 and its siblings) is an absolute joke. It's an overpriced piece of plastic glued to a laggy, closed-source cloud app that updates whenever it feels like it. 
+It all started when I set up my hybrid solar system. The inverter works like a charm, but the official Wi-Fi monitoring dongle (the infamous Solar Plug-RWB1 and its siblings) is an absolute joke. It's an overpriced piece of plastic glued to a laggy, closed-source cloud app that updates whenever it feels like it. 
 
 I refused to pay the "OEM tax" just to see my own battery voltage. I wanted real-time data, an Auto Transfer Switch (ATS) logic that actually makes sense, and I wanted it fully under my control. 
 
 After digging into how these inverters communicate, I found out that 99% of these budget-friendly Chinese hybrid inverters (Techfine, SUOER, EVO, Sumry,...) share the same DNA: they are **Voltronic clones**. 
 
-They use a simple ASCII protocol. Once you send the command `QPIGS` (plus a 2-byte CRC) at its serial port, the inverter immediately returns a massive string of data containing grid voltage, PV power, battery capacity, and temperatures. No API keys, no handshakes. Just raw ASCII.
+They use a simple ASCII protocol. Once you send the command `QPIGS` (plus a 2-byte CRC) at its serial port, the inverter immediately vomits out a massive string of data containing grid voltage, PV power, battery capacity, and temperatures. No API keys, no handshakes. Just raw ASCII.
 
 ---
 
@@ -260,7 +260,7 @@ Open the **Serial Monitor** at **115200 baud** and watch the output.
 
 ---
 
-### 1. Expected Output
+### 1. The Happy Path
 
 If you see something like:
 ```text
@@ -325,7 +325,7 @@ Double-check:
 
 Five minutes with a multimeter is usually more productive than five hours of changing code.
 
-**If that's the case, there may still be exceptions.**
+**If you've done all of that and it's still dead silent, your inverter might just be one of the rare exceptions this guide doesn't cover — sorry, you're on your own here.**
 
 ---
 
@@ -406,7 +406,7 @@ Add `//` at the beginning of the line to disable a module.
 ```
 ---
 
-### Solar System Capacity
+### Solar System Capacity (Crucial for ATS)
 
 This tells the ATS logic when to safely switch loads. The default values are for a typical **3kW Inverter**. Change these if you have a **5kW** or another system.
 ```cpp
@@ -584,7 +584,8 @@ In about 60 seconds, Vercel will build your application and give you a live prod
 
 Bookmark it. Add it to your phone's home screen.
 
-After deployment the dashboard is accessible from any device with an internet connection.
+Now you can check your inverter from anywhere with an internet connection, whether you're on the couch, at work, or wondering if the washing machine just pushed your inverter a little too hard.
+
 
 ---
 
