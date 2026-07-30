@@ -9,18 +9,18 @@
 
 ---
 
-## Table of Contents
+## 📑 Table of Contents
 
-- [1. The Backstory](#-1-the-backstory)
-- [2. Features](#-2-features)
-- [3. How It Works](#-3-how-it-works)
-- [4. Bill of Materials](#-4-bill-of-materials)
-- [5. Hardware Wiring](#-5-hardware-wiring-the-hardest-part)
-- [6. Cloud Setup](#-6-cloud-setup)
-- [7. Firmware Installation](#-7-firmware-installation)
-- [8. Frontend Setup](#-8-frontend-setup)
-- [9. Under the Hood](#-9-under-the-hood)
-- [10. Acknowledgements](#-10-acknowledgements)
+- [1. The Backstory](#1-the-backstory)
+- [2. Features](#2-features)
+- [3. How It Works](#3-how-it-works)
+- [4. Bill of Materials](#4-bill-of-materials)
+- [5. Hardware Wiring](#5-hardware-wiring-the-hardest-part)
+- [6. Cloud Setup](#6-cloud-setup)
+- [7. Firmware Installation](#7-firmware-installation)
+- [8. Frontend Setup](#8-frontend-setup)
+- [9. Under the Hood](#9-under-the-hood)
+- [10. Acknowledgements](#10-acknowledgements)
   
 ---
 
