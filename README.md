@@ -607,37 +607,48 @@ Dual-core FreeRTOS support made it easy to separate inverter polling from networ
 ## 9. Under the Hood
 
 ```text
-                         +----------------------+
-                         |   Solar Inverter     |
-                         | (Voltronic Clones)   |
-                         +----------+-----------+
-                                    |
-                               RS232 Serial
-                                    |
-                             MAX3232 Converter
-                                    |
-                             3.3V TTL UART
-                                    |
-                         +----------+----------+
-                         |        ESP32        |
-                         |---------------------|
-                         | Core 0              |
-                         | • Wi-Fi             |
-                         | • OTA               |
-                         | • ThingSpeak        |
-                         | • Telegram          |
-                         |---------------------|
-                         | Core 1              |
-                         | • Inverter Polling  |
-                         | • ATS Logic         |
-                         | • Data Processing   |
-                         +------+-----+--------+
-                                |     |
-                    HTTP Upload |     | Relay
-                                |     +----------> ATS
-                                |     |
-                                v     v
-                         +------------------+
+                    +----------------------+            +----------------------+
+                    |     Solar Panels     |            |        Grid          |
+                    +----------+-----------+            +-----------+----------+      
+                      DC Power |         +--------------------------| AC Power                  |
+                               |         |                          |
+                         +-----v---------v------+ 220VAC Output     |
+                         |   Solar Inverter     |-----------+       |
+                         | (Voltronic Clones)   |           |       |   
+                         +----------+-----------+           |       |
+                                    |                       |       |
+                               RS232 Serial                 |       |
+                                    |                       |       |
+                             MAX3232 Converter              |       |
+                                    |                       |       |
+                             3.3V TTL UART                  |       |
+                                    |                       |       |
+                         +----------+----------+            |       |
+                         |        ESP32        |            |       |
+                         |---------------------|            |       |
+                         | Core 0              |            |       |
+                         | • Wi-Fi             |            |       |
+                         | • OTA               |            |       |
+                         | • ThingSpeak        |            |       |
+                         | • Telegram          |            |       |
+                         |---------------------|            |       |
+                         | Core 1              |            |       |
+                         | • Inverter Polling  |            |       |
+                         | • ATS Logic         |            |       |
+                         | • Data Processing   |            |       |
+                         +------+-----+--------+            |       |
+                                |     |                     |       |
+                    HTTP Upload |     | Relay               |       |
+                                |     |                     |       |
+                                |     |                     |       |
+                                |     |                     v       v
+                                |     |              +----------------------+
+                                |     +------------> |      ATS Switch      |
+                                |     |              | (Automatic Transfer) |
+                                |     | (Status)     +----------+-----------+
+                                |     |                         |
+                                v     v                         v
+                         +------------------+               Heavy Load
                          |   ThingSpeak     |
                          +--------+---------+
                                   |
