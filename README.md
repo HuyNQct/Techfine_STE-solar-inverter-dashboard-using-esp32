@@ -607,10 +607,10 @@ Dual-core FreeRTOS support made it easy to separate inverter polling from networ
 ## 9. Under the Hood
 
 ```text
-                         ┌─────────────────────┐
+                         ┌──────────────────┐
                          │  Solar Inverter     │
                          │ (Voltronic Clones)  │
-                         └──────────┬──────────┘
+                         └──────────┬───────┘
                                     │
                                RS232 Serial
                                     │
@@ -618,7 +618,7 @@ Dual-core FreeRTOS support made it easy to separate inverter polling from networ
                                     │
                              3.3V TTL UART
                                     │
-                         ┌──────────▼──────────┐
+                         ┌────────▼─────────┐
                          │       ESP32         │
                          │---------------------│
                          │ Core 0              │
@@ -631,21 +631,21 @@ Dual-core FreeRTOS support made it easy to separate inverter polling from networ
                          │ • Inverter Polling  │
                          │ • ATS Logic         │
                          │ • Data Processing   │
-                         └──────┬─────┬────────┘
+                         └─────┬────┬───────┘
                                 │     │
                     HTTP Upload │     │ Relay
                                 │     │
                                 ▼     ▼
-                       ┌───────────────┐
-                       │ ThingSpeak    │
-                       └──────┬────────┘
-                              │
-                     HTTP REST API
-                              │
-                              ▼
-                    React Dashboard
-                              │
-                            Phone
+                           ┌─────────────┐
+                           │ ThingSpeak    │
+                           └─────┬───────┘
+                                  │
+                            HTTP REST API
+                                  │
+                                  ▼
+                           React Dashboard
+                                  │
+                                Phone
 ```
 
 ---
